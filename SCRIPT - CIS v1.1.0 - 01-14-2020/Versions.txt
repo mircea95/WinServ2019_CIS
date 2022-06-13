@@ -1,0 +1,3 @@
+CIS_WIN2019_V1.0_CIS v1.1.0 - V.0.1.ps1
+	- A fost corectat extragerea datelor despre politica de parole, daca serverul este inclus in DOMAIN extrage politica din domain.
+	- La informatie generala a fost inclusa sa se extrage si politica de parole. 

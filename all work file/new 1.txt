@@ -1,0 +1,39 @@
+ACTIVE DIRECTORY: AD integreaza statiile de lucru magazine, oficiul central, serverul de fisiere, serviciul de mail și alte servicii interne precum consola de administrare antivirus.
+DBMS: Acces pentru baza de date este acordat pentru 3 angajați din cadrul departamentului de administrare. 
+
+> New User: Solicitările pentru crearea unui utilizator nou în sistmele informaționale sunt inițiate de către angajatul cu funcție superioară, de exemplu Șeful de Secție. Șeful de Secție expediază email la adresa de suport "itsys@dragangroup.com", cu informație despre necesitatea de a crea un utilizator nou, se indică numele, prenumele angajatului, secția din care face parte, sistemul în care este nevoie de acces și rolurile necesare. Pentru solicitarea rolurile în sistem, se indică o persoană de referință și se solicită roluri asemănătoare. Matrice de acces nu există.
+Solicitările expediate la adresa de suport sunt importate automat în sistemul intern de ticketing, OTRS. Persoana de serviciu analizează solicitările parvenite. În cazul solitărilor de acces, se redirecționează către executant, administratorul responsabil nemijlocit de crearea conturilor. Prin urmare administratorul expediază numele de utilizator și parola noului utilizator. Pentru a schimba parola utilizatorul transmite o solicitare la adresa de suport.
+Regulile pentru crearea numelor de utilizator pentru utilizatori in sistemul UNA sunt urmatoarele: pentru utilizatorii din magazine se crează nume de utilizator format din inițialile funcției care o îndeplinește, iar pentru utilizatorii din oficiu numele de utilizator este personalizat. Însă sunt prezente și o serie de nume de utilizatori genereci, inclusiv personalul IT, practică utilizată anterior.
+> Terminated and Suspended Users: Conturile utilizatorilor se dezactivează în baza solicitărilor expediate și gestionate în otrs. Periodic, administratorii preiau informatia despre utilizatori de la HR si blocheaza conturile active in sistem.
+(Mail in care ei solicita info de la HR. Nu sunt probe ca revizuirea utilizatorilor intradevar se face)
+
+ 
+> Parola Una: Numele de utilizator și parola de acces către sistemul UNA, se expediază ca răspuns la solicitarea de acces. Șeful de Secție primește prin email credentialile de acces, prin urmare sunt redirecționate către utilizator. Parola în sistemul UNA de către utilizatori nu poate fi modificată. Parola are lungimea de 6 caracter, 3 cifre și 3 caractere ascii generate random.
+Politica de parole in AD, este cerinta sa se reseteze parola la o anumita perioada, si sunt incluse cerintele de complixitate.
+
+FINDING: Parola pentru sistemul UNA se transmite prin mail. Parola nu poate fi modificată. Parola setata este slabă. (el argumenteaza ca se compenseaza prin parola de la SO)
+FINDING: Utilizatori concediati au conturi active in sistem UNA si in AD(ex. Luchin Tatiana). Conturile utilizatorilor se dezactivează în baza solicitărilor expediate și gestionate în otrs.
+
+(persoane care lucreaza la acelasi calculator, pe ture, vad ce a facut colegul, la fel si menagerul are acces la tot ce fac subalternii, asta despre roluri.)
+(Pentru toate magzinele functionalul si rolurile sunt aceleasi, altfel ar fi haus)
+
+>Access to System Resources and Utilities: În sistemul UNA, utilizatorii sunt grupați pe magazine. Fiecare magazin are creată o grupă de accees, iar utilizatorii, indiferent de funcție, sunt atribuiți acestei grupe. Acest lucru este necesar pentru o trasparența a lucrărilor efectuate, iar angajații care lucrează pe tură să poată asigura o continuitate a lucrărilor începute. La nivel de grupă sunt configurate și atribuite drepturile și acceesurile permise în sistem.
+
+Pentru utilizatorii din magazin și de la depozit, conturile în AD sunt generice, ex:managerl43. Același principiu se respectă și în cazul utilizatorilor din oficiul central(ex. int13), se oferă nume de utilizator generic, însă pentru unii utilizatori, numele și prenumele deținătorului este inclus în descrierea utilizatorului. 
+
+FINDING: In AD numele de utilizatori is generici. In momentul cind se concediaza o persoana, numele de utilizator ii se atribuie noului angajat. Parola se reseteaza. 
+		 AD ii pe Windows Server mai vechi...trebuie de verificat! Univeb ii pe windows server 2003.
+		 Politica de parola, sistema obliga utilizatorii sa schimbe parola anual, cam mult.
+		 Acces pe serverul de baza, SO linux, sunt creati utilizatori generici, ex: admin, user, adm, etc.
+		 Pe serverul Uniweb erau o serie de contrui de utilizatori active, care au fost blocate pe perioada auditului. 
+		 În oficiul central, nu există limitări de acces la internet.
+
+Solicitare: - Act317(In moment cind angajatului nou ii se configureaza o statie de lucru noua, accesele se ofera in baza unui act.)
+			- Solicitare/Retragere accees pentru AD.	
+			- WSUS print screen
+
+>Access to Privileged IT Functions: Accesul administrativ pentru sistemele critice se acord în mod individual, în baza orderului emis de Director și cu acordul conducerii MoldRetail. Angajații ce dețin accese priveligiate posedă o vechime de muncă de mai mult de 4 ani, iar modul de acordare acces a individual, în dependență de sistemele vizate. Nu există o procedură concretă pentru asigurarea procesului dat. Fără acordul conducerii, acces priveligiat pentru sistemele companiei nu se oferă.
+
+(ideea cu utelizatorii din linux - pe server este mapa share, si ca sa gestioneze accesul la mapa ceea au conectat AD)
+
+>Internet Acces: Accesul la internet în magazin este blocat complet, reguli configurată la nivel de router, microtick. În oficiul central, nu există limitări de acces la internet. Unele resurse web ce prezintă risc de securitate, identificate de administratori, sunt blocate. Daca un utilizator prezintă o activitate web suspectă, accesul la internet este blocat. Acest lucru se efectuază reguli firewall la nivel de antivirusului. Pentru utilizatori deosebiti, precum Directorul General, sunt blocate toate conexiunile de intrare.

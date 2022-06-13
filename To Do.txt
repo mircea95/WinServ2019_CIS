@@ -1,0 +1,6 @@
+
+Pentru script sa verific eroarea care o da la verificarea actualizarilor.
+-actualizez si in 2016
+
+Sa aduc modificarile aduse scriprului 2019 conform 2016, ultima versiune.
+
